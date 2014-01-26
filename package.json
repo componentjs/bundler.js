@@ -1,0 +1,24 @@
+{
+  "name": "component-bundler",
+  "description": "bundlers and bundling guide for component",
+  "version": "0.0.0",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com",
+    "twitter": "https://twitter.com/jongleberry"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/component/bundler.js.git"
+  },
+  "bugs": {
+    "mail": "me@jongleberry.com",
+    "url": "https://github.com/component/bundler.js/issues"
+  },
+  "dependencies": {
+    "to-camel-case": "~0.2.0",
+    "component-resolver": "~0.0.0"
+  }
+}
