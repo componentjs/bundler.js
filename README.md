@@ -18,24 +18,26 @@ var bundler = require('component-bundler');
 // based on the `.locals` of a specific `component.json`
 var bundle = bundler.pages(require('./component.json'));
 
-co(function* () {
-  // resolve the dependency tree
-  // while also installing any remote dependencies
-  var resolver = resolve(process.cwd(), {
-    install: true
-  });
-  var tree = yield* resolver.tree();
-
+// resolve the dependency tree
+// while also installing any remote dependencies
+resolve(process.cwd(), {
+  install: true
+}, function (err, tree) {
+  if (err) throw err;
+  
   // create the bundles
   var bundles = bundle(tree);
-
-  // build each bundle and save them with the bundle name
+  
+  // build each bundle
   Object.keys(bundles).forEach(function (name) {
-    build.styles(bundles[name]).toFile(name + '.css');
-    build.scripts(bundles[name]).toFile(name + '.js');
+    build.styles(bundles[name]).build(function (err, css) {
+      // do something with the output
+    });
+    build.scripts(bundles[name]).build(function (err, js) {
+      // do something with the output
+    });
   });
-})();
-```
+})
 
 Where your main `component.json` looks something like:
 
