@@ -79,7 +79,7 @@ Generally you'll see component apps with the main component that looks like:
 }
 ```
 
-What this generally means is that the entry point is `boot`, not `app`, since `app` itself contains no scripts (i.e. the `index.js`). Thus, client-side, you'll execute `require('boot')`, not `require('app')` to initialize your app.
+What this generally means is that the entry point is `boot`, not `app`, since `app` itself contains no scripts (i.e. the `index.js`). Thus, client-side, you'll execute `require('./lib/boot')`, not `require('app')` to initialize your app.
 
 Now to create bundles, you simply create more entry points:
 
@@ -91,7 +91,7 @@ Now to create bundles, you simply create more entry points:
 }
 ```
 
-However, you still `require('boot')` as before. The difference now is that the resolver will now resolve the dependencies of all the bundles in one go. Each bundle is now its own entry point as long as they are not included in another bundle. Thus, to use a bundle, you'll have to include all its dependencies and `require('bundle-a')` to initialize it.
+However, you still `require('./lib/boot.js')` as before. The difference now is that the resolver will now resolve the dependencies of all the bundles in one go. Each bundle is now its own entry point as long as they are not included in another bundle. Thus, to use a bundle, you'll have to include all its dependencies and `require('./lib/bundle-a')` to initialize it.
 
 Remember you can't do `require('app')` as `app` itself contains no scripts.
 
@@ -110,11 +110,14 @@ It is also wise to "autorequire" each build so you don't have to do the followin
 <script src="boot.js"></script>
 <script src="bundle-a.js"></script>
 <script>
-  require('boot'); require('bundle-a');
+  require('./lib/boot'); 
+  require('./lib/bundle-a');
 </script>
 ```
 
-Instead, append each bundle with `require(JSON.stringify(name));`
+Unless you want to execute each bundle manually.
+Note that each component's entry point is its location relative to `process.cwd()` without any extensions.
+In other words, `./lib/boot` is the `boot` folder located within `lib/`.
 
 ## License
 
