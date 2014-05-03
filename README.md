@@ -38,6 +38,7 @@ resolve(process.cwd(), {
     });
   });
 })
+```
 
 Where your main `component.json` looks something like:
 
