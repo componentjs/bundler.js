@@ -10,8 +10,8 @@ This bundler uses [resolver.js](https://github.com/component/resolver.js):
 
 ```js
 var co = require('co');
+var build = require('component-builder');
 var resolve = require('component-resolver');
-var build = require('component-builder2');
 var bundler = require('component-bundler');
 
 // create a bundle function of type `.pages`
