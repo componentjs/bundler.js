@@ -9,7 +9,6 @@ You can see each bundler in [lib/](https://github.com/component/bundler.js/tree/
 This bundler uses [resolver.js](https://github.com/component/resolver.js):
 
 ```js
-var co = require('co');
 var build = require('component-builder');
 var resolve = require('component-resolver');
 var bundler = require('component-bundler');
