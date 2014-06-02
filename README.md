@@ -1,8 +1,10 @@
 # Component Bundler
 
-This is a bundler utility and guide for component. Not all bundling methods will be included in this repo, but it should help you create your own bundlers.
+This is a bundler utility and guide for component. Not all bundling methods will be included in this repo, but it should help you create your own bundlers. 
 
 You can see each bundler in [lib/](https://github.com/component/bundler.js/tree/master/lib).
+Use these included bundles as __instructional examples__ to create your own bundles.
+Creating your own bundler tailored for your app will be easier than trying to use one of these bundlers in your app.
 
 ## Example
 
