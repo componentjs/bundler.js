@@ -31,10 +31,14 @@ resolve(process.cwd(), {
   
   // build each bundle
   Object.keys(bundles).forEach(function (name) {
-    build.styles(bundles[name]).build(function (err, css) {
+    build.styles(bundles[name])
+    .use() // use all the plugins
+    .build(function (err, css) {
       // do something with the output
     });
-    build.scripts(bundles[name]).build(function (err, js) {
+    build.scripts(bundles[name])
+    .use() // use all the plugins
+    .build(function (err, js) {
       // do something with the output
     });
   });
