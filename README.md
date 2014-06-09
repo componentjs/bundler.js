@@ -1,14 +1,16 @@
 # Component Bundler
 
-This is a bundler utility and guide for component. Not all bundling methods will be included in this repo, but it should help you create your own bundlers. 
+This is a bundler utility and guide for component. Not all bundling methods will be included in this repo,
+but it should help you create your own bundlers. You should know how [builder2](https://github.com/co
 
-You can see each bundler in [lib/](https://github.com/component/bundler.js/tree/master/lib).
+You can see two bundlers in [lib/](https://github.com/component/bundler.js/tree/master/lib) for a different directory structure.
 Use these included bundles as __instructional examples__ to create your own bundles.
 Creating your own bundler tailored for your app will be easier than trying to use one of these bundlers in your app.
 
 ## Example
 
-This bundler uses [resolver.js](https://github.com/component/resolver.js):
+This bundler uses [resolver.js](https://github.com/component/resolver.js) and [builder2](https://github.com/component/builder2.js).
+Maybe you need to read how they work. 
 
 ```js
 var fs = require('fs');
