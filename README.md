@@ -11,17 +11,25 @@ Creating your own bundler tailored for your app will be easier than trying to us
 This bundler uses [resolver.js](https://github.com/component/resolver.js):
 
 ```js
+var fs = require('fs');
+var path = require('path');
+
 var build = require('component-builder');
 var resolve = require('component-resolver');
 var bundler = require('component-bundler');
 
 // create a bundle function of type `.pages`
 // based on the `.locals` of a specific `component.json`
-var bundle = bundler.pages(require('./component.json'));
+var option = {
+  root: proces.cwd(), 
+  build: "build" // directory should exist
+};
+var json = require(path.join(option.root, 'component.json'));
+var bundle = bundler.pages(json);
 
 // resolve the dependency tree
 // while also installing any remote dependencies
-resolve(process.cwd(), {
+resolve(option.root, {
   install: true
 }, function (err, tree) {
   if (err) throw err;
@@ -34,12 +42,19 @@ resolve(process.cwd(), {
     build.styles(bundles[name])
     .use() // use all the plugins
     .build(function (err, css) {
-      // do something with the output
+      if (err) throw error;
+      var file = path.join(option.build, name + '.css');
+      fs.writeFileSync(file, css, 'utf8');
     });
     build.scripts(bundles[name])
     .use() // use all the plugins
     .build(function (err, js) {
-      // do something with the output
+      if (err) throw err;
+      if (name === json.locals[0]) {
+        js = build.scripts.require + js; // add require() impl to boot component
+      }
+      var file = path.join(option.build, name + '.js');
+      fs.writeFileSync(file, js, 'utf8');
     });
   });
 })
