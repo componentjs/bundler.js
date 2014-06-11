@@ -121,7 +121,7 @@ Remember you can't do `require('app')` as `app` itself contains no scripts.
 The included bundlers now split up the dependencies wisely into each bundle depending on how each bundle is dependent on one another. There are an infinite amount of bundling graphs, so only the more commonly used ones are included.
 
 There are cases, where you don't have a boot component (none or multiple). In other words: if your **first** component has scripts that shouldn't be mixed with other bundles.
-You can define your `locals` of your main component: `["common", "bundle-a", "bundle-b", "bundle-c"]` and create a file with an empty object (`{}`) at this path `lib/common/comonent.json`.
+You can define your `locals` of your main component: `["common", "bundle-a", "bundle-b", "bundle-c"]` and create a file with an empty object (`{}`) at this path `lib/common/component.json`.
 
 It is up to the developer to correctly include script and style tags in the document:
 
