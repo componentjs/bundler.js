@@ -3,7 +3,7 @@
 This is a bundler utility and guide for component. Not all bundling methods will be included in this repo,
 but it should help you create your own bundlers. You should know how [builder2](https://github.com/co
 
-You can see two bundlers in [lib/](https://github.com/component/bundler.js/tree/master/lib) for a different directory structure.
+You can see two bundlers in [lib/](https://github.com/component/bundler.js/tree/master/lib) for a different directory structures.
 Use these included bundles as __instructional examples__ to create your own bundles.
 Creating your own bundler tailored for your app will be easier than trying to use one of these bundlers in your app.
 
