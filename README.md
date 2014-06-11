@@ -22,16 +22,16 @@ var bundler = require('component-bundler');
 
 // create a bundle function of type `.pages`
 // based on the `.locals` of a specific `component.json`
-var option = {
-  root: proces.cwd(), 
-  build: "build" // directory should exist
-};
-var json = require(path.join(option.root, 'component.json'));
+var options = {
+  root: path.join(__dirname, 'app'), // where your main component.json is located
+  build: path.join(__dirname, 'build') // component build output
+}
+var json = require(path.join(options.root, 'component.json'));
 var bundle = bundler.pages(json);
 
 // resolve the dependency tree
 // while also installing any remote dependencies
-resolve(option.root, {
+resolve(options.root, {
   install: true
 }, function (err, tree) {
   if (err) throw err;
@@ -42,20 +42,20 @@ resolve(option.root, {
   // build each bundle
   Object.keys(bundles).forEach(function (name) {
     build.styles(bundles[name])
-    .use() // use all the plugins
+    .use('styles', build.plugins.css())
     .build(function (err, css) {
-      if (err) throw error;
-      var file = path.join(option.build, name + '.css');
+      if (err) throw err;
+      var file = path.join(options.build, name + '.css');
       fs.writeFileSync(file, css, 'utf8');
     });
     build.scripts(bundles[name])
-    .use() // use all the plugins
+    .use('scripts', build.plugins.js())
     .build(function (err, js) {
       if (err) throw err;
       if (name === json.locals[0]) {
-        js = build.scripts.require + js; // add require() impl to boot component
+        js = build.scripts.require + js; // add require impl to boot component
       }
-      var file = path.join(option.build, name + '.js');
+      var file = path.join(options.build, name + '.js');
       fs.writeFileSync(file, js, 'utf8');
     });
   });
