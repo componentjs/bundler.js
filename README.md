@@ -1,7 +1,7 @@
 # Component Bundler
 
 This is a bundler utility and guide for component. Not all bundling methods will be included in this repo,
-but it should help you create your own bundlers. You should know how [builder2](https://github.com/co
+but it should help you create your own bundlers. You should know how [builder2](https://github.com/componentjs/builder2.js) works.
 
 You can see two bundlers in [lib/](https://github.com/component/bundler.js/tree/master/lib) for a different directory structures.
 Use these included bundles as __instructional examples__ to create your own bundles.
@@ -10,7 +10,7 @@ Creating your own bundler tailored for your app will be easier than trying to us
 ## Example
 
 This bundler uses [resolver.js](https://github.com/component/resolver.js) and [builder2](https://github.com/component/builder2.js).
-Maybe you need to read how they work. 
+Maybe you need to read how they work.
 
 ```js
 var fs = require('fs');
@@ -35,10 +35,10 @@ resolve(options.root, {
   install: true
 }, function (err, tree) {
   if (err) throw err;
-  
+
   // create the bundles
   var bundles = bundle(tree);
-  
+
   // build each bundle
   Object.keys(bundles).forEach(function (name) {
     build.styles(bundles[name])
@@ -136,7 +136,7 @@ It is also wise to "autorequire" each build in your bundler script so you don't 
 <script src="boot.js"></script>
 <script src="bundle-a.js"></script>
 <script>
-  require('./lib/boot'); 
+  require('./lib/boot');
   require('./lib/bundle-a');
 </script>
 ```
