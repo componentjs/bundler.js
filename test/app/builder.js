@@ -31,6 +31,7 @@ resolve(options.root, {
   Object.keys(bundles).forEach(function (name) {
     build.styles(bundles[name])
     .use('styles', build.plugins.css())
+    .use('styles', build.plugins.urlRewriter())
     .build(function (err, css) {
       if (err) throw err;
       var file = path.join(options.build, name + '/build.css');
@@ -48,5 +49,10 @@ resolve(options.root, {
       mkdir.sync(options.build + '/' + name);
       fs.writeFileSync(file, js, 'utf8');
     });
+    build.files(bundles[name], {
+        destination: options.build + '/' + name
+    })
+      .use('images', build.plugins.symlink())
+      .end();
   });
 });

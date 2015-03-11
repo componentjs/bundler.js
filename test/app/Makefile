@@ -10,6 +10,6 @@ components: $(META)
 	@component install
 
 clean:
-	rm -rf bundles components
+	rm -rf components build
 
 .PHONY: clean
