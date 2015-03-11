@@ -8,5 +8,8 @@
   ],
   "images": [
     "images/test.png"
+  ],
+  "files": [
+    "files/open-sans/*.ttf"
   ]
 }

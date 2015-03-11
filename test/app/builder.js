@@ -53,6 +53,7 @@ resolve(options.root, {
         destination: options.build + '/' + name
     })
       .use('images', build.plugins.symlink())
+      .use('files', build.plugins.symlink())
       .end();
   });
 });
