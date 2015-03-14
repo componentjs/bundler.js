@@ -18,7 +18,8 @@
     "url": "https://github.com/component/bundler.js/issues"
   },
   "dependencies": {
-    "to-camel-case": "~0.2.0",
-    "component-resolver": "~0.0.0"
+    "component-resolver": "~0.0.0",
+    "debug": "^2.1.3",
+    "to-camel-case": "~0.2.0"
   }
 }
